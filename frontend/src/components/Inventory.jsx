@@ -28,7 +28,7 @@ export default function Inventory() {
         <strong>{data.total_produtos}</strong>
       </div>
       <div className={styles.totalQuantity}>
-        <span>Quantidade Total:</span>
+        <span>Estoque Total:</span>
         <strong>{data.quantidade_total}</strong>
       </div>
       <div className={styles.totalValue}>

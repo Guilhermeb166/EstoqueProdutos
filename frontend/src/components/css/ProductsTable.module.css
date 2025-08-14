@@ -48,14 +48,17 @@ tbody tr:hover {
 .buttonsTable{
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 5px;
 }
 .buttonTable{
-    padding: 6px 12px;
+    padding: 6px 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
     font-size: 0.85rem;
+    letter-spacing: 1px;
+    font-weight: 700;
     transition: background-color 0.2s ease;
 
     &:first-of-type {
