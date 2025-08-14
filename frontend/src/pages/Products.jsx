@@ -1,41 +1,23 @@
 //Products.jsx
 import {useEffect, useState} from 'react'
-import api from '../api'
+
+import { useOutletContext } from 'react-router-dom'
 import ProductForm from '../components/ProductForm'
 import ProductsTable from '../components/ProductsTable'
 
 export default function Products() {
-    const [products,setProducts] = useState([])
-    const [editing,setEditing] = useState(null)
+    // Pegue as props do contexto do Outlet
+    const { products, loading,  handleUpdate, handleDelete } = useOutletContext();
 
-    const fetchProducts = async () => {
-        const res = await api.get("/produtos")
-        setProducts(res.data)
+    if (loading) {
+        return <p>Carregando produtos...</p>
     }
-
-    useEffect(()=>{fetchProducts()}, [])
-
-    const handleCreate = async (data) => {
-        await api.post("/produtos", data)
-        fetchProducts()
-    }
-
-    const handleUpdate = async (id, data) => {
-        await api.put(`/produtos/${id}`, data)
-        setEditing(null)
-        fetchProducts()
-    }
-
-    const handleDelete = async (id) =>{
-        await api.delete(`/produtos/${id}`)
-        fetchProducts()
-    }
-
+    
     return (
-        <section>
-            <h1>Produtos</h1>
-            
-            <ProductsTable products={products} onEdit={setEditing} onDelete={handleDelete} />
+        
+        <section style={{width: '100%', display:'flex',flexDirection:'column',alignItems:'center',gap:'20px'}}>
+            {/*<h1>Produtos</h1>*/}
+            <ProductsTable products={products} onUpdate={handleUpdate} onDelete={handleDelete} />
         </section>
     )
 }

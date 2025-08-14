@@ -10,6 +10,8 @@ export default function Inventory() {
     getInventory()
     .then((res)=> setData(res.data))
     .then((err)=> console.error("Erro ao carregar inventário", err))
+
+    
   }, [])
 
   if(!data){
@@ -17,7 +19,7 @@ export default function Inventory() {
   }
 
   return (
-    <section>
+    <section className={styles.Inventory}>
       <h2>📦 Inventário</h2>
       <div>
         <span>Total de Produtos</span>

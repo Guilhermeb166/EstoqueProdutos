@@ -5,7 +5,6 @@ import Products from "./pages/Products";
 import Inventory from "./components/Inventory";
 import ProductForm from "./components/ProductForm";
 
-
 function App() {
 
   return (

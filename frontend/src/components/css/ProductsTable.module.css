@@ -1,0 +1,75 @@
+.table{
+    width: 100%;
+    max-width: 600px;
+    table-layout: auto; /* Faz cada coluna ajustar ao conteúdo */
+    border-collapse: collapse;
+    background-color: var(--CinzaEscuro);
+    border-radius: 8px;
+    color: var(--CinzaClaro);
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 0.90rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+thead{
+    background-color: var(--background);
+}
+
+th,td{
+    padding: 12px 5px;
+    text-align: center;
+    border:1px solid #3b3d3f;
+}
+
+th{
+    font-weight: 700;
+    border-bottom: 1px solid #30363d;
+}
+td > input{
+    outline: none;
+    background-color: #3a3c41;
+    color: #fff;
+    border: none;
+    max-width: 90px;
+    padding: 6px 0 6px 4px;
+    border-radius: 3px;
+
+    &:focus{
+        background-color: #4d5057;
+    }
+}
+tbody tr:nth-child(even) {/*encontra todas as linhas (<tr>) que são "pares" (even) */
+  background-color: #1c2128;
+}
+
+tbody tr:hover {
+  background-color: #21262d;
+}
+.buttonsTable{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.buttonTable{
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
+
+    &:first-of-type {
+        background-color: var(--Verde);
+        color: #fff;
+    }
+    &:first-of-type:hover{
+        background-color: #2ea043;
+    }
+    &:last-of-type{
+        background-color: var(--Vermelho);
+        color: #fff;
+    }
+    &:last-of-type:hover {
+        background-color: #f85149;
+    }
+}

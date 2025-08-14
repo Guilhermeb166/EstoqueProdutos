@@ -3,35 +3,38 @@ import { NavLink, Outlet } from "react-router-dom"
 import Inventory from "./components/Inventory";
 import {useEffect, useState} from 'react'
 import styles from './components/css/Home.module.css'
+import api from './api'
 import Products from "./pages/Products";
 import ProductForm from "./components/ProductForm";
 
 export default function Home() {
   const [products,setProducts] = useState([])
-  const [editing,setEditing] = useState(null)
+    const [editing,setEditing] = useState(null)
+    const [loading, setLoading] = useState(true)
 
-  const fetchProducts = async () => {
-      const res = await api.get("/produtos")
-      setProducts(res.data)
-  }
+    const fetchProducts = async () => {
+        const res = await api.get("/produtos")
+        setProducts(res.data)
+        setLoading(false)
+    }
 
-  useEffect(()=>{fetchProducts()}, [])
+    useEffect(()=>{fetchProducts()}, [])
 
-  const handleCreate = async (data) => {
-      await api.post("/produtos", data)
-      fetchProducts()
-  }
+    const handleCreate = async (data) => {
+        await api.post("/produtos", data)
+        fetchProducts()
+    }
 
-  const handleUpdate = async (id, data) => {
-      await api.put(`/produtos/${id}`, data)
-      setEditing(null)
-      fetchProducts()
-  }
+    const handleUpdate = async (id, data) => {
+        await api.put(`/produtos/${id}`, data)
+        setEditing(null)
+        fetchProducts()
+    }
 
-  const handleDelete = async (id) =>{
-      await api.delete(`/produtos/${id}`)
-      fetchProducts()
-  }
+    const handleDelete = async (id) =>{
+        await api.delete(`/produtos/${id}`)
+        fetchProducts()
+    }
   return (
     <main className={styles.home}>
         
@@ -42,7 +45,7 @@ export default function Home() {
             <NavLink to="/products" className={({isActive})=> isActive ? `${styles.link} ${styles.activeLink}` : styles.link}>Produtos</NavLink>
         </nav>
         <div className={styles.content}>
-          <Outlet />
+          <Outlet context={{ products, editing, setEditing, loading, handleCreate, handleUpdate, handleDelete }} />
         </div>
         
     </main>
