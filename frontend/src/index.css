@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+:root{
+  --background: #0D1117;/*Fundo principal*/
+  --CinzaEscuro: #161B22;/*Card/caixa de formulário*/
+  --CinzaClaro: #C9D1D9;/*Texto secundário/placeholder*/
+  --Verde: #238636;/**/
+  --Vermelho: #D73A49;/**/
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body,#root{
+  height: 100vh;
+}
+
+#root{
+
+  background-color: var(--background);
+  color: #fff;
+  font-family: inter;
+  display: flex;
+  justify-content: center;
+}

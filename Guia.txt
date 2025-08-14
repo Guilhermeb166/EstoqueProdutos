@@ -1,0 +1,23 @@
+?python -m venv venv
+- Cria um ambiente virtual Python chamado "venv" na pasta atual
+- Ambientes virtuais isolam as dependências do projeto
+
+?pip install flask flask-cors sqlalchemy python-dotenv
+
+- FLASK: Framework web leve, O que é? Um microframework web em Python, minimalista e flexível.
+*Para que serve? Criar APIs, servidores web e aplicações backend rapidamente.
+
+- FLASK-CORS: Habilita CORS (Cross-Origin Resource Sharing) para APIs, O que é? Extensão do Flask para lidar com CORS (Cross-Origin Resource Sharing).
+*Para que serve? Permitir que um frontend (React, Angular, etc.) acesse sua API mesmo estando em domínios/portas diferentes (ex: http://localhost:3000 ↔ http://localhost:5000).
+
+- SQLALCHEMY: ORM (Mapeamento Objeto-Relacional) para bancos de dados, O que é? Um ORM (Object-Relational Mapping) poderoso. Para que serve?
+*Manipular bancos de dados (PostgreSQL, MySQL, SQLite) usando Python em vez de SQL puro.
+*Criar tabelas, fazer consultas e gerenciar dados de forma mais intuitiva.
+
+- PYTHON-DOTENV: O que é? Biblioteca para carregar variáveis de ambiente de um arquivo .env, Para que serve?
+*Armazenar configurações sensíveis (como senhas de banco de dados, chaves de API) fora do código.
+*Evitar expor dados críticos no GitHub ou em produção.
+
+?pip freeze > requirements.txt
+- Gera um arquivo "requirements.txt" listando todas as dependências instaladas com suas versões exatas
+- Isso permite que outros desenvolvedores (ou servidores de produção) instalem exatamente as mesmas versões
