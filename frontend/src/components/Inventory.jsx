@@ -23,17 +23,25 @@ export default function Inventory() {
   return (
     <section className={styles.Inventory}>
       <h2 className={styles.Title}>📦 Inventário</h2>
-      <div className={styles.totalProducts}>
+      <div className={styles.infoInventory}>
         <span>Total de Produtos:</span>
         <strong>{data.total_produtos}</strong>
       </div>
-      <div className={styles.totalQuantity}>
+      <div className={styles.infoInventory}>
         <span>Estoque Total:</span>
         <strong>{data.quantidade_total}</strong>
       </div>
-      <div className={styles.totalValue}>
+      <div className={styles.infoInventory}>
         <span>Valor Total:</span>
         <strong>R$ {data?.valor_total?.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) || "0,00"}</strong>
+      </div>
+      <div className={styles.lastProducts}>
+        {data.ultimo_adicionado && (
+          <div>Último produto adicionado: <strong>{data.ultimo_adicionado}</strong></div>
+        )}
+        {data.ultimo_excluido && (
+          <div>Último produto excluído: <strong>{data.ultimo_excluido}</strong></div>
+        )}
       </div>
       <small style={{ color: "#999" }}>
         Última atualização: {lastUpdate}

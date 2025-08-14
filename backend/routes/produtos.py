@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, abort
 from database import SessionLocal
-from models import Produto
+from models import Produto, ProdutoExcluido
+from datetime import datetime
 
 bp = Blueprint("produtos", __name__, url_prefix="/api/produtos")
 
@@ -60,6 +61,17 @@ def remover(id):
     if not p:
         session.close()
         abort(404)
+    
+    # Salva o produto na tabela ProdutoExcluido antes de deletar
+    excluido = ProdutoExcluido(
+        nome=p.nome,
+        descricao=p.descricao,
+        preco=p.preco,
+        quantidade=p.quantidade,
+        data_exclusao=datetime.utcnow()
+    )
+    session.add(excluido)
+
     session.delete(p)
     session.commit()
     session.close()
